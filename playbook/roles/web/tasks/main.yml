@@ -3,6 +3,12 @@
   yum: name=httpd
   when: "ansible_os_family == 'RedHat'"
 
-
 - name: start httpd
   service: name=httpd enabled=yes state=started
+
+- name: copy convert_logs
+  copy:
+    src: ../files/self_introduce_shimizu.html
+    dest: /var/www/html/self_introduce_shimizu.html
+    mode: 0644
+
